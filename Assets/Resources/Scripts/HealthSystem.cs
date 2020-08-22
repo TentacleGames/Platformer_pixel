@@ -38,7 +38,8 @@ public class HealthSystem : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         if (health < maxHealth && col.gameObject.CompareTag("Health")){
-            AddHealth(1);
+            Pickup pickup = col.gameObject.GetComponent<Pickup>();
+            AddHealth(pickup.health);
             Destroy(col.gameObject);
         }
     }
